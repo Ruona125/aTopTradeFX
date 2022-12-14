@@ -1,0 +1,13 @@
+.trade-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 4rem;
+}
+
+@media (max-width: 63em) {
+  .trade-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+}

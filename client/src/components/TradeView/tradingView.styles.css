@@ -1,0 +1,16 @@
+.grid-wrapper {
+  padding-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 22rem;
+}
+
+@media (max-width: 63em) {
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .grid-item {
+    padding-bottom: 63px;
+  }
+}
