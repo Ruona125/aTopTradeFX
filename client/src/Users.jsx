@@ -39,7 +39,11 @@ const Users = () => {
   const [users, setUsers] = useState(null);
   useEffect(() => {
     const url = "http://localhost:8000/user/register";
-    axios.get(url).then((response) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
+    axios.get(url, { headers }).then((response) => {
       setUsers(response.data);
     });
   }, []);

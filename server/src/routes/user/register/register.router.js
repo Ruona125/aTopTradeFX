@@ -1,5 +1,6 @@
 const express = require("express");
 const { body } = require("express-validator");
+const { requireAuth } = require("../../../utils/authorization");
 
 const userRouterRegistration = express.Router();
 
@@ -21,7 +22,7 @@ userRouterRegistration.post(
 );
 
 userRouterRegistration.get("/user/register/:user_id", getCertainRegisteredUser);
-userRouterRegistration.get("/user/register", getRegisteredUser);
+userRouterRegistration.get("/user/register", requireAuth, getRegisteredUser);
 
 module.exports = {
   userRouterRegistration,
