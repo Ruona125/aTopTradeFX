@@ -57,24 +57,14 @@ const logOut = () => {};
 
 export default function UserSidebar() {
   const classes = useStyles();
-  const { user_id } = useParams;
+
   const [state, setState] = useState({
     right: false,
   });
-  const [certainUser, setCertainUser] = useState("");
-
-  useEffect(() => {
-    const url = `http://localhost:8000/user/register/${user_id}`;
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: window.sessionStorage.getItem("token"),
-    };
-    axios.get(url, { headers }).then((response) => {
-      setCertainUser(response.data);
-    });
-  }, [user_id]);
-  // if (!certainUser) return <div>hi</div>;
-
+  let firstName = sessionStorage.getItem("firstName");
+  let lastName = sessionStorage.getItem("lastName");
+  let email = sessionStorage.getItem("email");
+  let investment = sessionStorage.getItem("investment");
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -136,7 +126,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    first name
+                    first name: {firstName}
                   </span>
                   <span
                     style={{
@@ -146,7 +136,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    Last Name
+                    Last Name: {lastName}
                   </span>
                   <span
                     style={{
@@ -156,7 +146,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    Email: {certainUser.email}
+                    Email: {email}
                   </span>
                   <span
                     style={{
@@ -166,17 +156,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    Investment:
-                  </span>
-                  <span
-                    style={{
-                      width: "100%",
-                      fontSize: 25,
-                      textAlign: "center",
-                      fontWeight: "bolder",
-                      wordWrap: "break-word",
-                    }}>
-                    Address
+                    Investment: {investment}
                   </span>
                 </div>
               </div>
