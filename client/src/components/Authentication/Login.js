@@ -35,7 +35,7 @@ const Login = ({ handleClose }) => {
       if (res.status === 200) {
         console.log(res.data);
         saveAuthTokenSession(res.data.token);
-        navigate("/dashboard");
+        navigate(`/dashboard`);
       }
     } catch (error) {
       console.log(error);

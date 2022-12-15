@@ -74,6 +74,16 @@ function getCertainTrade(req, res) {
     });
 }
 
+function getFullTradingDetails(req, res) {
+  db.select(
+    db.raw(
+      "u.user_id, first_name, last_name, t.user_id, balance, capital, profit, total_number_of_trade, b.user_id, bank_name, account_number, wallet_address from users u inner join trade t on u.user_id= t.user_id inner join bank_details b on u.user_id = b.user_id"
+    )
+  )
+    .then((fullTradeDetails) => res.status(200).json(fullTradeDetails))
+    .catch((err) => res.status(400).json("error getting trading details"));
+}
+
 function deleteTradeDetails(req, res) {
   const { user_id } = req.params;
   db("trade")
@@ -91,4 +101,5 @@ module.exports = {
   getTrade,
   getCertainTrade,
   deleteTradeDetails,
+  getFullTradingDetails,
 };

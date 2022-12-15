@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import { Avatar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import AvatarIcon from "../../utils/avatar.webp";
-import axios from "axios";
 
 const useStyles = makeStyles({
   container: {
@@ -56,9 +57,23 @@ const logOut = () => {};
 
 export default function UserSidebar() {
   const classes = useStyles();
+  const { user_id } = useParams;
   const [state, setState] = useState({
     right: false,
   });
+  const [certainUser, setCertainUser] = useState("");
+
+  useEffect(() => {
+    const url = `http://localhost:8000/user/register/${user_id}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
+    axios.get(url, { headers }).then((response) => {
+      setCertainUser(response.data);
+    });
+  }, [user_id]);
+  // if (!certainUser) return <div>hi</div>;
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -121,7 +136,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    {/* {details.user_id} */}
+                    first name
                   </span>
                   <span
                     style={{
@@ -141,7 +156,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    Email
+                    Email: {certainUser.email}
                   </span>
                   <span
                     style={{

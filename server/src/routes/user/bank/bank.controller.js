@@ -22,7 +22,6 @@ function bankDetails(req, res) {
       res.json(bankDetail[0]);
     })
     .catch((err) => res.status(400).json(console.log(err)));
-  console.log("hello");
 }
 
 function updateBankDetails(req, res) {
