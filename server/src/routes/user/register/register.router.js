@@ -21,7 +21,11 @@ userRouterRegistration.post(
   registerUser
 );
 
-userRouterRegistration.get("/user/register/:user_id", getCertainRegisteredUser);
+userRouterRegistration.get(
+  "/user/register/:user_id",
+  requireAuth,
+  getCertainRegisteredUser
+);
 userRouterRegistration.get("/user/register", requireAuth, getRegisteredUser);
 
 module.exports = {

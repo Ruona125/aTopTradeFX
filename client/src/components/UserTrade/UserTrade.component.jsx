@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button, Typography } from "@material-ui/core";
@@ -30,7 +30,11 @@ const UserTradeComponent = () => {
 
   useEffect(() => {
     const url = `http://localhost:8000/user/register/${user_id}`;
-    axios.get(url).then((response) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
+    axios.get(url, { headers }).then((response) => {
       setCertainTrade(response.data);
     });
   }, [user_id]);
@@ -47,8 +51,12 @@ const UserTradeComponent = () => {
       amount: amount,
     };
     const url = "http://localhost:8000/user/trade";
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
     try {
-      let res = await axios.post(url, data);
+      let res = await axios.post(url, data, { headers });
       if (res.status === 200) {
         setBalance("");
         setCapital("");

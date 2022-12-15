@@ -33,7 +33,11 @@ const UpdateTradeDetails = () => {
 
   useEffect(() => {
     const url = `http://localhost:8000/user/trade/${user_id}`;
-    axios.get(url).then((response) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
+    axios.get(url, { headers }).then((response) => {
       setBalance(response.data.balance);
       setCapital(response.data.capital);
       setProfit(response.data.profit);
@@ -52,8 +56,12 @@ const UpdateTradeDetails = () => {
       amount: amount,
     };
     const url = `http://localhost:8000/user/trade/${user_id}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
     try {
-      let res = await axios.put(url, data);
+      let res = await axios.put(url, data, { headers });
       if (res.status === 200) {
         navigate("/admin/dashboard");
       } else {

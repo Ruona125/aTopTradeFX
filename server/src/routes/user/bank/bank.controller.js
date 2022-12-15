@@ -7,11 +7,12 @@ function bankDetails(req, res) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { bank_name, account_number, wallet_address } = req.body;
+  const { bank_name, account_number, wallet_address, user_id } = req.body;
 
   db("bank_details")
     .returning("*")
     .insert({
+      user_id,
       bank_name,
       account_number,
       wallet_address,
