@@ -10,6 +10,8 @@ const {
   getCertainTrade,
   deleteTradeDetails,
   getFullTradingDetails,
+  getUserTrade,
+  getUserBankDetails,
 } = require("./trade.controller");
 
 userTrade.post(
@@ -25,7 +27,9 @@ userTrade.post(
 
 userTrade.put("/user/trade/:user_id", requireAuth, updateTrade);
 userTrade.get("/user/trade", requireAuth, getTrade);
+userTrade.get("/usertrade", requireAuth, getUserTrade);
 userTrade.get("/report", requireAuth, getFullTradingDetails);
+userTrade.get("/user/bank", requireAuth, getUserBankDetails);
 userTrade.get("/user/trade/:user_id", requireAuth, getCertainTrade);
 userTrade.delete("/user/trade/:user_id", requireAuth, deleteTradeDetails);
 module.exports = { userTrade };
