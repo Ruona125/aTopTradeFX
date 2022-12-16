@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
@@ -20,28 +19,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Withdrawal = () => {
   const classes = useStyles();
-  const { user_id } = useParams();
-  const [certainBankDetails, setCertainBankDetails] = useState(null);
   const [bank_name, setBankName] = useState("");
   const [account_number, setAccountNumber] = useState("");
   const [wallet_address, setWalletAddress] = useState("");
 
-  useEffect(() => {
-    const url = `http://localhost:8000/user/register/${user_id}`;
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: window.sessionStorage.getItem("token"),
-    };
-    axios.get(url, { headers }).then((response) => {
-      setCertainBankDetails(response.data);
-    });
-  }, [user_id]);
-  if (!certainBankDetails) return null;
+  let userId = sessionStorage.getItem("id");
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      user_id: user_id,
+      user_id: userId,
       bank_name: bank_name,
       account_number: account_number,
       wallet_address: wallet_address,
@@ -103,7 +90,6 @@ const Withdrawal = () => {
               inputProps={{ style: { color: "#fff" } }}
               InputLabelProps={{ style: { color: "gold" } }}
             />
-            <p>{certainBankDetails.email}</p>
             <Button
               variant="contained"
               size="large"

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -34,6 +35,11 @@ const useStyles = makeStyles({
 
 export default function TradeResult() {
   const classes = useStyles();
+  // const userId = sessionStorage.getItem("id")
+
+  // useEffect(() => {
+  //   const url = `http://localhost:8000/`
+  // })
 
   return (
     <TableContainer component={Paper}>

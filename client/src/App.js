@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} exact />
         <Route path="/coins/:id" element={<CoinPage />} />
-        <Route path="/withdrawal/:user_id" element={<Withdrawal />} />
+        <Route path="/withdrawal" element={<Withdrawal />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/admin/dashboard" element={<AdminDashBoard />} />
         <Route path="/create/trade/:user_id" element={<UserTrade />} />
