@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const Login = ({ isAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -41,6 +41,7 @@ const Login = () => {
         window.sessionStorage.setItem("token", res.data.token);
         window.sessionStorage.setItem("id", res.data.userId);
         window.sessionStorage.setItem("investment", res.data.investment);
+        isAuthenticated();
         navigate(`/dashboard`);
       }
     } catch (error) {

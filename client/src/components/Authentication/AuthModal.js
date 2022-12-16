@@ -21,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthModal() {
+export default function AuthModal({
+  isAuthenticated,
+  isNotAuthenticated,
+  isAuth,
+}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -41,17 +45,31 @@ export default function AuthModal() {
 
   return (
     <div>
-      <Button
-        variant="contained"
-        style={{
-          width: 85,
-          height: 40,
-          marginLeft: 15,
-          backgroundColor: "#eebc1d",
-        }}
-        onClick={handleOpen}>
-        Login
-      </Button>
+      {!isAuth ? (
+        <Button
+          variant="contained"
+          style={{
+            width: 85,
+            height: 40,
+            marginLeft: 15,
+            backgroundColor: "#eebc1d",
+          }}
+          onClick={handleOpen}>
+          Login
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          style={{
+            width: 95,
+            height: 40,
+            marginLeft: 15,
+            backgroundColor: "#eebc1d",
+          }}
+          onClick={handleOpen}>
+          Log Out
+        </Button>
+      )}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -78,7 +96,12 @@ export default function AuthModal() {
               </Tabs>
             </AppBar>
 
-            {value === 0 && <Login handleClose={handleClose} />}
+            {value === 0 && (
+              <Login
+                handleClose={handleClose}
+                isAuthenticated={isAuthenticated}
+              />
+            )}
             {value === 1 && <Signup handleClose={handleClose} />}
           </div>
         </Fade>

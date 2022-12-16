@@ -18,6 +18,7 @@ function App() {
       minHeight: "100vh",
     },
   }));
+
   const classes = useStyles();
   return (
     <div className={classes.App}>

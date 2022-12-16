@@ -9,7 +9,7 @@ import {
   createTheme,
   ThemeProvider,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 import AuthModal from "./Authentication/AuthModal";
@@ -36,6 +36,13 @@ const Header = () => {
       type: "dark",
     },
   });
+  const [isAuth, setIsAuth] = useState(false);
+  const isAuthenticated = () => {
+    setIsAuth(true);
+  };
+  const isNotAuthenticated = () => {
+    setIsAuth(false);
+  };
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
@@ -57,8 +64,12 @@ const Header = () => {
                 <MenuItem value={"USD"}>USD</MenuItem>
                 <MenuItem value={"EUR"}>EUR</MenuItem>
               </Select>
-              <AuthModal />
-              <UserSidebar />
+              <AuthModal
+                isAuthenticated={isAuthenticated}
+                isNotAuthenticated={isNotAuthenticated}
+                isAuth={isAuth}
+              />
+              {isAuth && <UserSidebar />}
             </Toolbar>
           </Container>
         </AppBar>
