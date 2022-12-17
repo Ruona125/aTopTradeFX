@@ -36,12 +36,15 @@ const Header = () => {
       type: "dark",
     },
   });
-  const [isAuth, setIsAuth] = useState(false);
+  const [logOutAuth, setIsAuth] = useState(false);
+
   const isAuthenticated = () => {
-    setIsAuth(true);
+    if (sessionStorage.getItem("token")) {
+      setIsAuth(true);
+    }
   };
   const isNotAuthenticated = () => {
-    setIsAuth(false);
+    setIsAuth(true);
   };
   return (
     <div>
@@ -67,9 +70,9 @@ const Header = () => {
               <AuthModal
                 isAuthenticated={isAuthenticated}
                 isNotAuthenticated={isNotAuthenticated}
-                isAuth={isAuth}
+                isAuth={logOutAuth}
               />
-              {isAuth && <UserSidebar />}
+              {logOutAuth && <UserSidebar />}
             </Toolbar>
           </Container>
         </AppBar>

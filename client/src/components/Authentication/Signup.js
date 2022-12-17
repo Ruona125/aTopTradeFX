@@ -68,7 +68,7 @@ const Signup = ({ handleClose }) => {
         investment,
       });
       if (res.status === 200) {
-        navigate("/dashboard");
+        navigate(`/dashboard/${res.data.user_id}`);
         console.log("worked");
       }
     } catch (error) {

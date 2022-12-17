@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -43,6 +44,13 @@ export default function AuthModal({
     setValue(newValue);
   };
 
+  let navigate = useNavigate();
+
+  const logOut = () => {
+    isNotAuthenticated();
+    navigate("/");
+  };
+
   return (
     <div>
       {!isAuth ? (
@@ -66,7 +74,7 @@ export default function AuthModal({
             marginLeft: 15,
             backgroundColor: "#eebc1d",
           }}
-          onClick={handleOpen}>
+          onClick={logOut}>
           Log Out
         </Button>
       )}
@@ -96,7 +104,7 @@ export default function AuthModal({
               </Tabs>
             </AppBar>
 
-            {value === 0 && (
+            {value === 0 && isAuthenticated && (
               <Login
                 handleClose={handleClose}
                 isAuthenticated={isAuthenticated}

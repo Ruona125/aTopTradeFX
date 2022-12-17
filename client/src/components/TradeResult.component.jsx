@@ -37,38 +37,53 @@ const useStyles = makeStyles({
 export default function TradeResult() {
   const classes = useStyles();
   // const userId = sessionStorage.getItem("id")
+  const { user_id } = useParams();
+  const [userTradeDetails, setUserTradeDestils] = useState(null);
 
-  // useEffect(() => {
-  //   const url = `http://localhost:8000/`
-  // })
+  useEffect(() => {
+    const url = `http://localhost:8000/usertrade/${user_id}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: window.sessionStorage.getItem("token"),
+    };
+    axios.get(url, { headers }).then((response) => {
+      setUserTradeDestils(response.data);
+    });
+  });
+  if (!userTradeDetails) return null;
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">Time</StyledTableCell>
-            <StyledTableCell align="center">Buy/Sell</StyledTableCell>
-            <StyledTableCell align="center">Amount BPS</StyledTableCell>
-            <StyledTableCell align="center">Dealt BPS</StyledTableCell>
-            <StyledTableCell align="center">Capital</StyledTableCell>
             <StyledTableCell align="center">Balance</StyledTableCell>
-            <StyledTableCell align="center">Profit</StyledTableCell>
+            <StyledTableCell align="center">Capital</StyledTableCell>
+            <StyledTableCell align="center"> Profit</StyledTableCell>
+            <StyledTableCell align="center">Amount</StyledTableCell>
             <StyledTableCell align="center">
-              Total Number of Trades
+              Total Number Of Trades
             </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <StyledTableRow>
-            <StyledTableCell align="center">ruona</StyledTableCell>
-            <StyledTableCell align="center">phil</StyledTableCell>
-            <StyledTableCell align="center">john</StyledTableCell>
-            <StyledTableCell align="center">james</StyledTableCell>
-            <StyledTableCell align="center">joshua</StyledTableCell>
-            <StyledTableCell align="center">ethan</StyledTableCell>
-            <StyledTableCell align="center">jake</StyledTableCell>
-            <StyledTableCell align="center">nathan</StyledTableCell>
+            <StyledTableCell align="center">
+              {userTradeDetails.balance}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {userTradeDetails.capital}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {userTradeDetails.profit}
+            </StyledTableCell>
+
+            <StyledTableCell align="center">
+              {userTradeDetails.amount}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {userTradeDetails.total_number_of_trade}
+            </StyledTableCell>
           </StyledTableRow>
         </TableBody>
       </Table>

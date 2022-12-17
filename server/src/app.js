@@ -9,6 +9,7 @@ const {
 const { userRouter } = require("./routes/user/signin/signin.router");
 const { userTrade } = require("./routes/user/trade/trade.router");
 const { userBankDetails } = require("./routes/user/bank/bank.router");
+const { logOutRouter } = require("./routes/user/signout/signout.routers");
 const app = express();
 
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(userRouterRegistration);
 app.use(userRouter);
 app.use(userTrade);
 app.use(userBankDetails);
+app.use(logOutRouter);
 
 module.exports = {
   app,
