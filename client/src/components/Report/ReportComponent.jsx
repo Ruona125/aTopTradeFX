@@ -72,6 +72,25 @@ const Report = () => {
       minWidth: 50,
       align: "center",
     },
+
+    {
+      id: "BankName",
+      label: "Bank Name",
+      minWidth: 50,
+      align: "center",
+    },
+    {
+      id: "AccountNumber",
+      label: "Account Number",
+      minWidth: 50,
+      align: "center",
+    },
+    {
+      id: "WalletAddress",
+      label: "Bank Name",
+      minWidth: 50,
+      align: "Wallet Address",
+    },
     {
       id: "UpdateTradeDetails",
       label: "Update Trade Details",
@@ -118,6 +137,15 @@ const Report = () => {
                 </StyledTableCell>
                 <StyledTableCell align="center" style={{ color: "#fff" }}>
                   {report.amount}
+                </StyledTableCell>
+                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                  {report.bank_name}
+                </StyledTableCell>
+                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                  {report.account_number}
+                </StyledTableCell>
+                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                  {report.wallet_address}
                 </StyledTableCell>
                 <StyledTableCell align="center" style={{ color: "#fff" }}>
                   <Link to={`/update/trade/${report.user_id}`}>
