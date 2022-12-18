@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     objectFit: "contain",
   },
   logout: {
-    height: "8%",
+    height: "70%",
     width: "100%",
     backgroundColor: "#EEBC1D",
     marginTop: 20,
@@ -52,8 +52,6 @@ const useStyles = makeStyles({
     overflowY: "scroll",
   },
 });
-
-const logOut = () => {};
 
 export default function UserSidebar() {
   const classes = useStyles();
@@ -103,7 +101,7 @@ export default function UserSidebar() {
                   src={AvatarIcon}
                   alt="picture profile"
                 />
-                <span
+                {/* <span
                   style={{
                     width: "100%",
                     fontSize: 25,
@@ -112,7 +110,7 @@ export default function UserSidebar() {
                     wordWrap: "break-word",
                   }}>
                   <Link to="/withdrawal">withdrawal</Link>
-                </span>
+                </span> */}
 
                 <div className={classes.watchlist}>
                   {/* <span style={{ fontSize: 15, textShadow: "0 0 15px black" }}>
@@ -160,12 +158,11 @@ export default function UserSidebar() {
                   </span>
                 </div>
               </div>
-              <Button
-                variant="contained"
-                className={classes.logout}
-                onClick={logOut}>
-                Log Out
-              </Button>
+              <Link to="/">
+                <Button variant="contained" className={classes.logout}>
+                  Log Out
+                </Button>
+              </Link>
             </div>
           </Drawer>
         </React.Fragment>

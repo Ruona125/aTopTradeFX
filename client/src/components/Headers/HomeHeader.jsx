@@ -11,9 +11,9 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { CryptoState } from "../CryptoContext";
-import AuthModal from "./Authentication/AuthModal";
-import UserSidebar from "./Authentication/UserSidebar";
+import { CryptoState } from "../../CryptoContext";
+import AuthModal from "../Authentication/AuthModal";
+import UserSidebar from "../Authentication/UserSidebar";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = () => {
+const HomeHeader = () => {
   const classes = useStyles();
   const { currency, setCurrency } = CryptoState();
   const darkTheme = createTheme({
@@ -72,7 +72,6 @@ const Header = () => {
                 isNotAuthenticated={isNotAuthenticated}
                 isAuth={logOutAuth}
               />
-              {logOutAuth && <UserSidebar />}
             </Toolbar>
           </Container>
         </AppBar>
@@ -81,4 +80,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HomeHeader;

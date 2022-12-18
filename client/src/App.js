@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CoinPage from "./pages/CoinPage";
 import { makeStyles } from "@material-ui/core";
-import Header from "./components/Header";
+import Header from "./components/Headers/Header";
 import Withdrawal from "./pages/Withdrawal";
 import DashBoard from "./pages/DashBoard";
 import AdminDashBoard from "./pages/Admin";
@@ -23,7 +23,7 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.App}>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<HomePage />} exact />
         <Route path="/coins/:id" element={<CoinPage />} />

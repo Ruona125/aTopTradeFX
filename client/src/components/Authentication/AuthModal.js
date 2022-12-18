@@ -53,7 +53,7 @@ export default function AuthModal({
 
   return (
     <div>
-      {!isAuth ? (
+      {/* {!isAuth ? (
         <Button
           variant="contained"
           style={{
@@ -77,7 +77,18 @@ export default function AuthModal({
           onClick={logOut}>
           Log Out
         </Button>
-      )}
+      )} */}
+      <Button
+        variant="contained"
+        style={{
+          width: 85,
+          height: 40,
+          marginLeft: 15,
+          backgroundColor: "#eebc1d",
+        }}
+        onClick={handleOpen}>
+        Login
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
