@@ -9,6 +9,7 @@ import DashBoard from "./pages/DashBoard";
 import AdminDashBoard from "./pages/Admin";
 import UserTrade from "./pages/UserTrade";
 import UpdateTrade from "./pages/UpdateTrade";
+import UserReport from "./pages/Report";
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -31,6 +32,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashBoard />} />
         <Route path="/create/trade/:user_id" element={<UserTrade />} />
         <Route path="/update/trade/:user_id" element={<UpdateTrade />} />
+        <Route path="/report" element={<UserReport />} />
       </Routes>
     </div>
   );

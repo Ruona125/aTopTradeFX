@@ -32,7 +32,7 @@ const UpdateTradeDetails = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:8000/user/trade/${user_id}`;
+    const url = `http://localhost:8000/usertrade/${user_id}`;
     const headers = {
       "Content-Type": "application/json",
       Authorization: window.sessionStorage.getItem("token"),
