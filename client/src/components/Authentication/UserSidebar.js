@@ -124,8 +124,9 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    first name: {firstName}
+                    {firstName} {lastName}
                   </span>
+
                   <span
                     style={{
                       width: "100%",
@@ -134,17 +135,7 @@ export default function UserSidebar() {
                       fontWeight: "bolder",
                       wordWrap: "break-word",
                     }}>
-                    Last Name: {lastName}
-                  </span>
-                  <span
-                    style={{
-                      width: "100%",
-                      fontSize: 25,
-                      textAlign: "center",
-                      fontWeight: "bolder",
-                      wordWrap: "break-word",
-                    }}>
-                    Email: {email}
+                    {email}
                   </span>
                   <span
                     style={{
