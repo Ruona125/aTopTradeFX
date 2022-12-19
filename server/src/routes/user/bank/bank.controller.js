@@ -25,11 +25,11 @@ function bankDetails(req, res) {
 }
 
 function updateBankDetails(req, res) {
-  const { bank_id } = req.params;
+  const { user_id } = req.params;
   const { bank_name, account_number, wallet_address } = req.body;
 
   db("bank_details")
-    .where({ bank_id })
+    .where({ user_id })
     .update({
       bank_name: bank_name,
       account_number: account_number,
@@ -53,10 +53,10 @@ function getBankDetails(req, res) {
 }
 
 function getCertainBankDetails(req, res) {
-  const { bank_id } = req.params;
+  const { user_id } = req.params;
   db.select("*")
     .from("bank_details")
-    .where({ bank_id })
+    .where({ user_id })
     .then((bankDetail) => {
       if (bankDetail.length) {
         res.json(bankDetail[0]);
@@ -67,9 +67,9 @@ function getCertainBankDetails(req, res) {
 }
 
 function deleteBankDetails(req, res) {
-  const { bank_id } = req.params;
+  const { user_id } = req.params;
   db("bank_details")
-    .where({ bank_id })
+    .where({ user_id })
     .del()
     .then(() => {
       res.json("details deleted");

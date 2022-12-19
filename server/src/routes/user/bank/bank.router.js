@@ -20,10 +20,10 @@ userBankDetails.post(
   bankDetails
 );
 
-userBankDetails.put("/user/bank/:bank_id", requireAuth, updateBankDetails);
+userBankDetails.put("/user/bank/:user_id", requireAuth, updateBankDetails);
 userBankDetails.get("/user/bank", requireAuth, getBankDetails);
-userBankDetails.get("/user/bank/:bank_id", requireAuth, getCertainBankDetails);
-userBankDetails.delete("/user/bank/:bank_id", requireAuth, deleteBankDetails);
+userBankDetails.get("/user/bank/:user_id", requireAuth, getCertainBankDetails);
+userBankDetails.delete("/user/bank/:user_id", requireAuth, deleteBankDetails);
 
 module.exports = {
   userBankDetails,

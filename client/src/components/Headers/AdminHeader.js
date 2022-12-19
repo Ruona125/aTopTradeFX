@@ -46,18 +46,18 @@ const AdminHeader = () => {
               <Typography className={classes.title} variant="h6">
                 <Link to="/">Atop Trade FX</Link>
               </Typography>
-              <Select
-                variant="outlined"
-                style={{
-                  width: 100,
-                  height: 40,
-                  marginRight: 15,
-                }}
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}>
-                <MenuItem value={"USD"}>USD</MenuItem>
-                <MenuItem value={"EUR"}>EUR</MenuItem>
-              </Select>
+              <Link to="/admin/dashboard">
+                <Button
+                  variant="contained"
+                  style={{
+                    width: 110,
+                    height: 40,
+                    marginLeft: 15,
+                    backgroundColor: "#eebc1d",
+                  }}>
+                  DashBoard
+                </Button>
+              </Link>
               <Link to="/report">
                 <Button
                   variant="contained"

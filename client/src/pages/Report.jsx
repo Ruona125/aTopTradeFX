@@ -1,7 +1,7 @@
 import React from "react";
 import Report from "../components/Report/ReportComponent";
 import BitCoinDashBoard from "../components/Dashboard/BitCoinDashBoard";
-import AdminHeader from "../components/Authentication/AdminHeader";
+import AdminHeader from "../components/Headers/AdminHeader";
 
 const UserReport = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import AdminHeader from "../components/Authentication/AdminHeader";
+import AdminHeader from "../components/Headers/AdminHeader";
 import BitCoinDashBoard from "../components/Dashboard/BitCoinDashBoard";
-import Users from "../Users";
+import Users from "../components/Users";
 
 const AdminDashBoard = () => {
   return (
