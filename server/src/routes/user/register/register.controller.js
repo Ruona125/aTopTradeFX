@@ -18,6 +18,7 @@ function registerUser(req, res) {
     investment,
     address,
     password,
+    roles,
   } = req.body;
 
   const saltRounds = 10;
@@ -42,6 +43,7 @@ function registerUser(req, res) {
             date_of_birth: date_of_birth,
             investment: investment,
             address: address,
+            roles: roles,
           })
           .then((LoginUsers) => {
             res.status(200).json(LoginUsers[0]);
