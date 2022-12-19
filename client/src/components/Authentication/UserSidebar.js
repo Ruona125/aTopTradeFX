@@ -158,6 +158,11 @@ export default function UserSidebar() {
                   </span>
                 </div>
               </div>
+              <Link to={`/bank/${window.sessionStorage.getItem("id")}`}>
+                <Button variant="contained" className={classes.logout}>
+                  Bank Details
+                </Button>
+              </Link>
               <Link to="/">
                 <Button variant="contained" className={classes.logout}>
                   Log Out
