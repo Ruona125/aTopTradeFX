@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = ({ isAuthenticated, isNotAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
 
   const classes = useStyles();
 
@@ -32,7 +33,7 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         email,
         password,
       });
-      if (res.status === 200) {
+      if (res.data) {
         // console.log(res.data);
         // saveAuthTokenSession(res.data);
         window.sessionStorage.setItem("firstName", res.data.first_name);
@@ -43,7 +44,10 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         window.sessionStorage.setItem("investment", res.data.investment);
 
         isAuthenticated();
-        navigate(`/dashboard/${window.sessionStorage.getItem("id")}`);
+        setLoginStatus(res.data);
+        navigate(`/main`);
+      } else {
+        setLoginStatus(res.data.email);
       }
     } catch (error) {
       console.log(error);

@@ -11,6 +11,7 @@ import UserTrade from "./pages/UserTrade";
 import UpdateTrade from "./pages/UpdateTrade";
 import UserReport from "./pages/Report";
 import BankDetails from "./pages/BankDetails";
+import Main from "./pages/Main";
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -34,6 +35,7 @@ function App() {
         <Route path="/create/trade/:user_id" element={<UserTrade />} />
         <Route path="/update/trade/:user_id" element={<UpdateTrade />} />
         <Route path="/report" element={<UserReport />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/bank/:user_id" element={<BankDetails />} />
       </Routes>
     </div>
