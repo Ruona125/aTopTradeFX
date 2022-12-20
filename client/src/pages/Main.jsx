@@ -7,10 +7,12 @@ const Main = () => {
   const [roles, setRole] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/user/signin").them((response) => {
-      if (response.data.success === true) {
-        console.log(response.data[0]);
+    axios.get("http://localhost:8000/user/signin").then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
         setRole(response.data[0].roles);
+      } else {
+        console.log("error");
       }
     });
   }, []);
