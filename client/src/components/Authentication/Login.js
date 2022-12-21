@@ -33,7 +33,7 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         email,
         password,
       });
-      if (res.data) {
+      if (res.status === 200 && res.data.roles === "admin") {
         // console.log(res.data);
         // saveAuthTokenSession(res.data);
         window.sessionStorage.setItem("firstName", res.data.first_name);
@@ -42,10 +42,21 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         window.sessionStorage.setItem("token", res.data.token);
         window.sessionStorage.setItem("id", res.data.userId);
         window.sessionStorage.setItem("investment", res.data.investment);
-
+        window.sessionStorage.setItem("roles", res.data.roles);
         isAuthenticated();
         setLoginStatus(res.data);
-        navigate(`/main`);
+        navigate(`/admin/dashboard`);
+      } else if (res.status === 200 && res.data.roles === "user") {
+        window.sessionStorage.setItem("firstName", res.data.first_name);
+        window.sessionStorage.setItem("lastName", res.data.last_name);
+        window.sessionStorage.setItem("email", res.data.email);
+        window.sessionStorage.setItem("token", res.data.token);
+        window.sessionStorage.setItem("id", res.data.userId);
+        window.sessionStorage.setItem("investment", res.data.investment);
+        window.sessionStorage.setItem("roles", res.data.roles);
+        isAuthenticated();
+        setLoginStatus(res.data);
+        navigate(`/dashboard/${window.sessionStorage.getItem("id")}`);
       } else {
         setLoginStatus(res.data.email);
       }

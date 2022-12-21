@@ -28,8 +28,8 @@ userRouterRegistration.get(
 );
 userRouterRegistration.get(
   "/user/register",
-  userDetailsTrade(["admin"]),
-  requireAuth,
+  // userDetailsTrade(["admin"]),
+  // requireAuth,
   getRegisteredUser
 );
 

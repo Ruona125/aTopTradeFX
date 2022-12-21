@@ -17,10 +17,27 @@ const BankDetailsComponent = () => {
   });
   if (!bankDetails) return null;
   return (
-    <div>
-      <p>{bankDetails.bank_name}</p>
-      <p>{bankDetails.account_number}</p>
-      <p>{bankDetails.wallet_address}</p>
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: "10rem",
+        bottom: 0,
+        margin: "auto",
+      }}>
+      <center>
+        <h1 style={{ color: "gold", paddingBottom: "23px" }}>Bank Details</h1>
+        <p style={{ paddingBottom: "23px" }}>
+          Bank Name: {bankDetails.bank_name}
+        </p>
+        <p style={{ paddingBottom: "23px" }}>
+          Account Number: {bankDetails.account_number}
+        </p>
+        <p style={{ paddingBottom: "23px" }}>
+          Wallet Address: {bankDetails.wallet_address}
+        </p>
+      </center>
     </div>
   );
 };

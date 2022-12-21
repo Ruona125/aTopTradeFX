@@ -70,7 +70,7 @@ const setToken = (key, value) => {
 
 const createSessions = async (users) => {
   //JWT TOKEN AND RETURN USER DATA
-  const { email, user_id, first_name, last_name, investment } = users;
+  const { email, user_id, first_name, last_name, investment, roles } = users;
   const token = signToken(email);
   try {
     await setToken(token, user_id);
@@ -78,6 +78,7 @@ const createSessions = async (users) => {
       success: "true",
       userId: user_id,
       token,
+      roles: roles,
       email: email,
       first_name: first_name,
       last_name: last_name,
