@@ -34,8 +34,8 @@ const investments = [
 ];
 const userRoles = [
   {
-    value: "user",
-    label: "user",
+    value: "admin",
+    label: "admin",
   },
 ];
 
@@ -48,7 +48,7 @@ const Signup = ({ handleClose }) => {
   const [phone_number, setPhone_number] = useState("");
   const [date_of_birth, setDate_of_birth] = useState("");
   const [address, setAddress] = useState("");
-  const [roles, setRoles] = useState("user");
+  const [roles, setRoles] = useState("admin");
   const [loginStatus, setLoginStatus] = useState("");
 
   const navigate = useNavigate();
@@ -77,14 +77,26 @@ const Signup = ({ handleClose }) => {
         investment,
         roles,
       });
-      if (res.status === 200) {
-        console.log(res.data);
+      if (res.status === 200 && res.data.roles === "admin") {
         window.sessionStorage.setItem("firstName", res.data.first_name);
         window.sessionStorage.setItem("lastName", res.data.last_name);
         window.sessionStorage.setItem("email", res.data.email);
         window.sessionStorage.setItem("id", res.data.user_id);
+        window.sessionStorage.setItem("investment", res.data.investment);
+        window.sessionStorage.setItem("roles", res.data.roles);
+        window.sessionStorage.setItem("token", res.data.token);
         navigate(`/main/${window.sessionStorage.getItem("id")}`);
-        console.log("worked");
+        navigate(`/admin/dashboard`);
+      } else if (res.status === 200 && res.data.roles === "user") {
+        window.sessionStorage.setItem("firstName", res.data.first_name);
+        window.sessionStorage.setItem("lastName", res.data.last_name);
+        window.sessionStorage.setItem("email", res.data.email);
+        window.sessionStorage.setItem("token", res.data.token);
+        window.sessionStorage.setItem("id", res.data.userId);
+        window.sessionStorage.setItem("investment", res.data.investment);
+        window.sessionStorage.setItem("roles", res.data.roles);
+        setLoginStatus(res.data);
+        navigate(`/main/${window.sessionStorage.getItem("id")}`);
       }
     } catch (error) {
       console.log(error);
@@ -186,7 +198,7 @@ const Signup = ({ handleClose }) => {
           id="standard-select-roles"
           style={{ display: "none" }}
           select
-          label="user"
+          label="admin"
           value={roles}
           onChange={(e) => setRoles(e.target.value)}
           helperText="Please select your roles">
