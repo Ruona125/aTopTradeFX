@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, TextField } from "@material-ui/core";
+import { Box, Button, TextField, Typography } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core";
 import axios from "axios";
@@ -95,12 +95,12 @@ const Signup = ({ handleClose }) => {
         window.sessionStorage.setItem("id", res.data.userId);
         window.sessionStorage.setItem("investment", res.data.investment);
         window.sessionStorage.setItem("roles", res.data.roles);
-        setLoginStatus(res.data);
         navigate(`/main/${window.sessionStorage.getItem("id")}`);
+      } else {
+        setLoginStatus("incorrect registration details");
       }
     } catch (error) {
-      console.log(error);
-      console.log("nothing");
+      setLoginStatus("incorrect login details");
     }
   };
   return (
@@ -110,7 +110,6 @@ const Signup = ({ handleClose }) => {
       <form
         className={classes.root}
         onSubmit={(event) => {
-          console.log("submitted");
           event.preventDefault();
           register(
             first_name,
@@ -218,6 +217,7 @@ const Signup = ({ handleClose }) => {
           type="submit">
           Sign Up
         </Button>
+        <Typography style={{ color: "red" }}>{loginStatus}</Typography>
       </form>
     </Box>
   );

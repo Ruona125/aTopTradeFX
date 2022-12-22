@@ -35,8 +35,6 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         password,
       });
       if (res.status === 200 && res.data.roles === "admin") {
-        // console.log(res.data);
-        // saveAuthTokenSession(res.data);
         window.sessionStorage.setItem("firstName", res.data.first_name);
         window.sessionStorage.setItem("lastName", res.data.last_name);
         window.sessionStorage.setItem("email", res.data.email);
@@ -62,7 +60,6 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         setLoginStatus("incorrect login details");
       }
     } catch (error) {
-      console.log(error);
       setLoginStatus("incorrect login details");
       // setMessage("incorrect login details");
     }

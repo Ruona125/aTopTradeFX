@@ -63,10 +63,10 @@ const UpdateTradeDetails = () => {
       if (res.status === 200) {
         navigate("/admin/dashboard");
       } else {
-        console.log("error updating data");
+        setTradeDetails("error updating data");
       }
     } catch (err) {
-      console.log(err);
+      setTradeDetails("error updating data");
     }
   };
   return (
@@ -131,6 +131,7 @@ const UpdateTradeDetails = () => {
               type="submit">
               Update Trade
             </Button>
+            <Typography style={{ color: "red" }}>{tradeDetails}</Typography>
           </form>
         </div>
       </center>

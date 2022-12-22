@@ -27,7 +27,7 @@ const UserTradeComponent = () => {
   const [profit, setProfit] = useState("");
   const [total_number_of_trade, setTotalNumberOfTrade] = useState("");
   const [amount, setAmount] = useState("");
-
+  const [tradingDetails, setTradingDetails] = useState("");
   useEffect(() => {
     const url = `http://localhost:8000/user/register/${user_id}`;
     const headers = {
@@ -63,10 +63,10 @@ const UserTradeComponent = () => {
         setTotalNumberOfTrade("");
         setAmount("");
       } else {
-        console.log("error sending data");
+        setTradingDetails("error sending data");
       }
     } catch (err) {
-      console.log(err);
+      setTradingDetails("error sending data");
     }
   };
 
@@ -132,6 +132,7 @@ const UserTradeComponent = () => {
               type="submit">
               Create Trade
             </Button>
+            <Typography>{tradingDetails}</Typography>
           </form>
         </div>
       </center>

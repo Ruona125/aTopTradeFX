@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,7 @@ const Withdrawal = () => {
   const [bank_name, setBankName] = useState("");
   const [account_number, setAccountNumber] = useState("");
   const [wallet_address, setWalletAddress] = useState("");
+  const [withdrawal, setWithdrawal] = useState("");
 
   let userId = sessionStorage.getItem("id");
 
@@ -45,10 +46,10 @@ const Withdrawal = () => {
         setAccountNumber("");
         setWalletAddress("");
       } else {
-        console.log("error sending data");
+        setWithdrawal("error sending data");
       }
     } catch (err) {
-      console.log(err);
+      setWithdrawal("error sending data");
     }
   };
   return (
@@ -99,6 +100,7 @@ const Withdrawal = () => {
               type="submit">
               Submit
             </Button>
+            <Typography>{withdrawal}</Typography>
           </form>
         </div>
       </center>
