@@ -37,10 +37,6 @@ const userRoles = [
     value: "user",
     label: "user",
   },
-  {
-    value: "admin",
-    label: "admin",
-  },
 ];
 
 const Signup = ({ handleClose }) => {
@@ -83,6 +79,8 @@ const Signup = ({ handleClose }) => {
       });
       if (res.status === 200) {
         console.log(res.data);
+        window.sessionStorage.setItem("firstName", res.data.first_name);
+        window.sessionStorage.setItem("lastName", res.data.last_name);
         window.sessionStorage.setItem("email", res.data.email);
         window.sessionStorage.setItem("id", res.data.user_id);
         navigate(`/main/${window.sessionStorage.getItem("id")}`);
@@ -186,6 +184,7 @@ const Signup = ({ handleClose }) => {
 
         <TextField
           id="standard-select-roles"
+          style={{ display: "none" }}
           select
           label="user"
           value={roles}

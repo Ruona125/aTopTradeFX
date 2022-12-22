@@ -22,7 +22,7 @@ const UserTradeComponent = () => {
   const classes = useStyles();
   const { user_id } = useParams();
   const [certainTrade, setCertainTrade] = useState(null);
-  const [balance, setBalance] = useState("");
+
   const [capital, setCapital] = useState("");
   const [profit, setProfit] = useState("");
   const [total_number_of_trade, setTotalNumberOfTrade] = useState("");
@@ -44,7 +44,7 @@ const UserTradeComponent = () => {
     e.preventDefault();
     const data = {
       user_id: user_id,
-      balance: balance,
+
       capital: capital,
       profit: profit,
       total_number_of_trade: total_number_of_trade,
@@ -58,7 +58,6 @@ const UserTradeComponent = () => {
     try {
       let res = await axios.post(url, data, { headers });
       if (res.status === 200) {
-        setBalance("");
         setCapital("");
         setProfit("");
         setTotalNumberOfTrade("");
@@ -84,16 +83,6 @@ const UserTradeComponent = () => {
             className={classes.root}
             noValidate
             autoComplete="off">
-            <TextField
-              id="outlined-basic"
-              inputProps={{ style: { color: "#fff" } }}
-              style={{ paddingBottom: "23px" }}
-              label="Balance"
-              variant="outlined"
-              value={balance}
-              onChange={(e) => setBalance(e.target.value)}
-              InputLabelProps={{ style: { color: "gold" } }}
-            />
             <TextField
               variant="outlined"
               id="outlined-basic"

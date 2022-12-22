@@ -22,7 +22,7 @@ const UpdateTradeDetails = () => {
   const classes = useStyles();
   const { user_id } = useParams();
   // const [tradeDetails, setTradeDetails] = useState("")
-  const [balance, setBalance] = useState("");
+
   const [capital, setCapital] = useState("");
   const [profit, setProfit] = useState("");
   const [total_number_of_trade, setTotalNumberOfTrade] = useState("");
@@ -38,7 +38,6 @@ const UpdateTradeDetails = () => {
       Authorization: window.sessionStorage.getItem("token"),
     };
     axios.get(url, { headers }).then((response) => {
-      setBalance(response.data.balance);
       setCapital(response.data.capital);
       setProfit(response.data.profit);
       setTotalNumberOfTrade(response.data.total_number_of_trade);
@@ -49,7 +48,6 @@ const UpdateTradeDetails = () => {
   let handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      balance: balance,
       capital: capital,
       profit: profit,
       total_number_of_trade: total_number_of_trade,
@@ -84,16 +82,6 @@ const UpdateTradeDetails = () => {
             className={classes.root}
             noValidate
             autoComplete="off">
-            <TextField
-              id="outlined-basic"
-              inputProps={{ style: { color: "#fff" } }}
-              style={{ paddingBottom: "23px" }}
-              label="Balance"
-              variant="outlined"
-              value={balance}
-              onChange={(e) => setBalance(e.target.value)}
-              InputLabelProps={{ style: { color: "gold" } }}
-            />
             <TextField
               variant="outlined"
               id="outlined-basic"

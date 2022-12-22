@@ -28,11 +28,6 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
 
   let navigate = useNavigate();
 
-  // let saveAuthTokenSession = (userDetails) => {
-  //   window.sessionStorage.setItem("userDetail", userDetails);
-  //   // console.log(token);
-  // };
-
   const handleLogin = async (email, password) => {
     try {
       let res = await axios.post("http://localhost:8000/user/signin", {

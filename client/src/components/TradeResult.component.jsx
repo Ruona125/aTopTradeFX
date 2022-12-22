@@ -57,7 +57,6 @@ export default function TradeResult() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">Balance</StyledTableCell>
             <StyledTableCell align="center">Capital</StyledTableCell>
             <StyledTableCell align="center"> Profit</StyledTableCell>
             <StyledTableCell align="center">Amount</StyledTableCell>
@@ -68,9 +67,6 @@ export default function TradeResult() {
         </TableHead>
         <TableBody>
           <StyledTableRow>
-            <StyledTableCell align="center">
-              {userTradeDetails.balance}
-            </StyledTableCell>
             <StyledTableCell align="center">
               {userTradeDetails.capital}
             </StyledTableCell>
