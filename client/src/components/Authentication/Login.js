@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Box, TextField, Button, makeStyles } from "@material-ui/core";
+import {
+  Box,
+  TextField,
+  Button,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +50,7 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         window.sessionStorage.setItem("investment", res.data.investment);
         window.sessionStorage.setItem("roles", res.data.roles);
         isAuthenticated();
-        setLoginStatus(res.data);
+
         navigate(`/admin/dashboard`);
       } else if (res.status === 200 && res.data.roles === "user") {
         window.sessionStorage.setItem("firstName", res.data.first_name);
@@ -56,12 +62,13 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
         window.sessionStorage.setItem("roles", res.data.roles);
         isAuthenticated();
         setLoginStatus(res.data);
-        navigate(`/dashboard/${window.sessionStorage.getItem("id")}`);
+        navigate(`/main/${window.sessionStorage.getItem("id")}`);
       } else {
-        setLoginStatus(res.data.email);
+        setLoginStatus("incorrect login details");
       }
     } catch (error) {
       console.log(error);
+      setLoginStatus("incorrect login details");
       // setMessage("incorrect login details");
     }
   };
@@ -99,6 +106,7 @@ const Login = ({ isAuthenticated, isNotAuthenticated }) => {
             type="submit">
             Sign In
           </Button>
+          <Typography style={{ color: "red" }}>{loginStatus}</Typography>
         </form>
       </Box>
     </div>

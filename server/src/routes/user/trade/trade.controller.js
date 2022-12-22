@@ -7,13 +7,11 @@ function trade(req, res) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { balance, capital, profit, total_number_of_trade, amount, user_id } =
-    req.body;
+  const { capital, profit, total_number_of_trade, amount, user_id } = req.body;
 
   db("trade")
     .returning("*")
     .insert({
-      balance,
       capital,
       profit,
       total_number_of_trade,
@@ -28,12 +26,11 @@ function trade(req, res) {
 
 function updateTrade(req, res) {
   const { user_id } = req.params;
-  const { balance, capital, profit, total_number_of_trade, amount } = req.body;
+  const { capital, profit, total_number_of_trade, amount } = req.body;
 
   db("trade")
     .where({ user_id })
     .update({
-      balance: balance,
       capital: capital,
       profit: profit,
       total_number_of_trade: total_number_of_trade,
@@ -77,7 +74,7 @@ function getCertainTrade(req, res) {
 function getFullTradingDetails(req, res) {
   db.select(
     db.raw(
-      "u.user_id, first_name, last_name, t.user_id, balance, capital, profit, total_number_of_trade, amount, b.user_id, bank_name, account_number, wallet_address from users u inner join trade t on u.user_id= t.user_id inner join bank_details b on u.user_id = b.user_id"
+      "u.user_id, first_name, last_name, t.user_id,  capital, profit, total_number_of_trade, amount, b.user_id, bank_name, account_number, wallet_address from users u inner join trade t on u.user_id= t.user_id inner join bank_details b on u.user_id = b.user_id"
     )
   )
     .then((fullTradeDetails) => res.status(200).json(fullTradeDetails))
@@ -87,7 +84,7 @@ function getFullTradingDetails(req, res) {
 function getUserTrade(req, res) {
   db.select(
     db.raw(
-      "u.user_id, first_name, last_name, t.user_id, balance, capital, profit, total_number_of_trade from users u inner join trade t on u.user_id= t.user_id"
+      "u.user_id, first_name, last_name, t.user_id,  capital, profit, total_number_of_trade from users u inner join trade t on u.user_id= t.user_id"
     )
   )
     .then((userTrade) => res.status(200).json(userTrade))

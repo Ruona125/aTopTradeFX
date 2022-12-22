@@ -17,7 +17,7 @@ const {
 
 userTrade.post(
   "/user/trade",
-  body("balance").isNumeric(),
+
   body("capital").isNumeric(),
   body("profit").isNumeric(),
   body("total_number_of_trade").isNumeric(),
@@ -29,12 +29,7 @@ userTrade.post(
 userTrade.put("/user/trade/:user_id", requireAuth, updateTrade);
 userTrade.get("/user/trade", requireAuth, getTrade);
 userTrade.get("/usertrade", requireAuth, getUserTrade);
-userTrade.get(
-  "/report",
-  userDetailsTrade(["admin"]),
-  requireAuth,
-  getFullTradingDetails
-);
+userTrade.get("/report", requireAuth, getFullTradingDetails);
 userTrade.get("/user/bank", requireAuth, getUserBankDetails);
 userTrade.get("/usertrade/:user_id", requireAuth, getCertainTrade);
 userTrade.delete("/user/trade/:user_id", requireAuth, deleteTradeDetails);

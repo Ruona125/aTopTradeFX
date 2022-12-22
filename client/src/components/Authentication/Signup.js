@@ -32,6 +32,16 @@ const investments = [
     label: "Ultimate",
   },
 ];
+const userRoles = [
+  {
+    value: "user",
+    label: "user",
+  },
+  {
+    value: "admin",
+    label: "admin",
+  },
+];
 
 const Signup = ({ handleClose }) => {
   const [email, setEmail] = useState("");
@@ -42,6 +52,8 @@ const Signup = ({ handleClose }) => {
   const [phone_number, setPhone_number] = useState("");
   const [date_of_birth, setDate_of_birth] = useState("");
   const [address, setAddress] = useState("");
+  const [roles, setRoles] = useState("user");
+  const [loginStatus, setLoginStatus] = useState("");
 
   const navigate = useNavigate();
   const classes = useStyles();
@@ -54,7 +66,8 @@ const Signup = ({ handleClose }) => {
     phone_number,
     date_of_birth,
     address,
-    investment
+    investment,
+    roles
   ) => {
     try {
       let res = await axios.post("http://localhost:8000/user/register", {
@@ -66,9 +79,13 @@ const Signup = ({ handleClose }) => {
         date_of_birth,
         address,
         investment,
+        roles,
       });
       if (res.status === 200) {
-        navigate(`/dashboard/${res.data.user_id}`);
+        console.log(res.data);
+        window.sessionStorage.setItem("email", res.data.email);
+        window.sessionStorage.setItem("id", res.data.user_id);
+        navigate(`/main/${window.sessionStorage.getItem("id")}`);
         console.log("worked");
       }
     } catch (error) {
@@ -93,7 +110,8 @@ const Signup = ({ handleClose }) => {
             phone_number,
             date_of_birth,
             address,
-            investment
+            investment,
+            roles
           );
         }}>
         <TextField
@@ -160,6 +178,20 @@ const Signup = ({ handleClose }) => {
           onChange={(e) => setInvestment(e.target.value)}
           helperText="Please select your investment plan">
           {investments.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <TextField
+          id="standard-select-roles"
+          select
+          label="user"
+          value={roles}
+          onChange={(e) => setRoles(e.target.value)}
+          helperText="Please select your roles">
+          {userRoles.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

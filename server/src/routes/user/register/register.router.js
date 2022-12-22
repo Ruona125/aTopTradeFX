@@ -17,7 +17,6 @@ userRouterRegistration.post(
   body("email").isEmail(),
   body("date_of_birth").isDate(),
   body("investment").isString(),
-
   registerUser
 );
 
@@ -26,12 +25,7 @@ userRouterRegistration.get(
   requireAuth,
   getCertainRegisteredUser
 );
-userRouterRegistration.get(
-  "/user/register",
-  // userDetailsTrade(["admin"]),
-  // requireAuth,
-  getRegisteredUser
-);
+userRouterRegistration.get("/user/register", requireAuth, getRegisteredUser);
 
 module.exports = {
   userRouterRegistration,

@@ -52,7 +52,6 @@ const Report = () => {
   const columns = [
     { id: "firstName", label: "First Name", minWidth: 50, align: "center" },
     { id: "lastName", label: "Last Name", minWidth: 50, align: "center" },
-    { id: "balance", label: "Balance", minWidth: 50, align: "center" },
     { id: "Capital", label: "Capital", minWidth: 50, align: "center" },
     {
       id: "Profit",
@@ -123,9 +122,7 @@ const Report = () => {
                 <StyledTableCell align="center" style={{ color: "#fff" }}>
                   {report.last_name}
                 </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
-                  {report.balance}
-                </StyledTableCell>
+
                 <StyledTableCell align="center" style={{ color: "#fff" }}>
                   {report.capital}
                 </StyledTableCell>
