@@ -87,22 +87,20 @@ const Users = () => {
           {users.map((user, i) => {
             return (
               <StyledTableRow key={i}>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                <StyledTableCell align="center">
                   {user.first_name}
                 </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                <StyledTableCell align="center">
                   {user.last_name}
                 </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
-                  {user.email}
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                <StyledTableCell align="center">{user.email}</StyledTableCell>
+                <StyledTableCell align="center">
                   {user.investment}
                 </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                <StyledTableCell align="center">
                   {user.phone_number}
                 </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#fff" }}>
+                <StyledTableCell align="center">
                   <Link to={`/create/trade/${user.user_id}`}>Create Trade</Link>
                 </StyledTableCell>
               </StyledTableRow>

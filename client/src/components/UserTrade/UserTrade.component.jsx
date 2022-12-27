@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button, Typography } from "@material-ui/core";
@@ -28,6 +28,7 @@ const UserTradeComponent = () => {
   const [total_number_of_trade, setTotalNumberOfTrade] = useState("");
   const [amount, setAmount] = useState("");
   const [tradingDetails, setTradingDetails] = useState("");
+  let navigate = useNavigate();
   useEffect(() => {
     const url = `http://localhost:8000/user/register/${user_id}`;
     const headers = {
@@ -62,6 +63,7 @@ const UserTradeComponent = () => {
         setProfit("");
         setTotalNumberOfTrade("");
         setAmount("");
+        navigate("/admin/dashboard");
       } else {
         setTradingDetails("error sending data");
       }

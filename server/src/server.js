@@ -13,6 +13,6 @@ const startServer = async () => {
   server.listen(PORT, () => {
     console.log(`listening to port ${PORT} 🚀 .....`);
   });
-}; 
+};
 
 startServer();

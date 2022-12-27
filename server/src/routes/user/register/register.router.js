@@ -8,7 +8,10 @@ const {
   registerUser,
   getCertainRegisteredUser,
   getRegisteredUser,
+  testRouter,
 } = require("./register.controller");
+
+userRouterRegistration.get("/", testRouter);
 
 userRouterRegistration.post(
   "/user/register",

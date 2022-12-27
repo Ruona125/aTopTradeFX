@@ -34,12 +34,12 @@ const investments = [
 ];
 const userRoles = [
   {
-    value: "admin",
-    label: "admin",
+    value: "user",
+    label: "user",
   },
 ];
 
-const Signup = ({ handleClose }) => {
+const Signup = ({ handleClose, setValue }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [first_name, setFirst_name] = useState("");
@@ -48,7 +48,7 @@ const Signup = ({ handleClose }) => {
   const [phone_number, setPhone_number] = useState("");
   const [date_of_birth, setDate_of_birth] = useState("");
   const [address, setAddress] = useState("");
-  const [roles, setRoles] = useState("admin");
+  const [roles, setRoles] = useState("user");
   const [loginStatus, setLoginStatus] = useState("");
 
   const navigate = useNavigate();
@@ -85,8 +85,8 @@ const Signup = ({ handleClose }) => {
         window.sessionStorage.setItem("investment", res.data.investment);
         window.sessionStorage.setItem("roles", res.data.roles);
         window.sessionStorage.setItem("token", res.data.token);
-        navigate(`/main/${window.sessionStorage.getItem("id")}`);
-        navigate(`/admin/dashboard`);
+        // navigate(`/admin/dashboard`);
+        setValue(0);
       } else if (res.status === 200 && res.data.roles === "user") {
         window.sessionStorage.setItem("firstName", res.data.first_name);
         window.sessionStorage.setItem("lastName", res.data.last_name);
@@ -95,7 +95,9 @@ const Signup = ({ handleClose }) => {
         window.sessionStorage.setItem("id", res.data.userId);
         window.sessionStorage.setItem("investment", res.data.investment);
         window.sessionStorage.setItem("roles", res.data.roles);
-        navigate(`/main/${window.sessionStorage.getItem("id")}`);
+
+        // navigate(`/main/${res.data.user_id}`);
+        setValue(0);
       } else {
         setLoginStatus("incorrect registration details");
       }
@@ -197,7 +199,7 @@ const Signup = ({ handleClose }) => {
           id="standard-select-roles"
           style={{ display: "none" }}
           select
-          label="admin"
+          label="user"
           value={roles}
           onChange={(e) => setRoles(e.target.value)}
           helperText="Please select your roles">

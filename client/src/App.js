@@ -11,6 +11,7 @@ import UserTrade from "./pages/UserTrade";
 import UpdateTrade from "./pages/UpdateTrade";
 import UserReport from "./pages/Report";
 import BankDetails from "./pages/BankDetails";
+import Login from "./components/Authentication/Login";
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -35,6 +36,7 @@ function App() {
         <Route path="/update/trade/:user_id" element={<UpdateTrade />} />
         <Route path="/report" element={<UserReport />} />
         <Route path="/bank/:user_id" element={<BankDetails />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

@@ -2,6 +2,10 @@ const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 const { db } = require("../../../models/database");
 
+function testRouter(req, res) {
+  res.status(200).json("it is working");
+}
+
 function registerUser(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -80,4 +84,5 @@ module.exports = {
   registerUser,
   getRegisteredUser,
   getCertainRegisteredUser,
+  testRouter,
 };

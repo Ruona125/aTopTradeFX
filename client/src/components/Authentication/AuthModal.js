@@ -53,31 +53,6 @@ export default function AuthModal({
 
   return (
     <div>
-      {/* {!isAuth ? (
-        <Button
-          variant="contained"
-          style={{
-            width: 85,
-            height: 40,
-            marginLeft: 15,
-            backgroundColor: "#eebc1d",
-          }}
-          onClick={handleOpen}>
-          Login
-        </Button>
-      ) : (
-        <Button
-          variant="contained"
-          style={{
-            width: 95,
-            height: 40,
-            marginLeft: 15,
-            backgroundColor: "#eebc1d",
-          }}
-          onClick={logOut}>
-          Log Out
-        </Button>
-      )} */}
       <Button
         variant="contained"
         style={{
@@ -121,7 +96,9 @@ export default function AuthModal({
                 isAuthenticated={isAuthenticated}
               />
             )}
-            {value === 1 && <Signup handleClose={handleClose} />}
+            {value === 1 && (
+              <Signup setValue={setValue} handleClose={handleClose} />
+            )}
           </div>
         </Fade>
       </Modal>
