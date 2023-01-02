@@ -1,4 +1,6 @@
-create table trade(
+
+
+CREATE TABLE trade(
   trade_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
    user_id INT NOT NULL,
    capital VARCHAR(255) NOT NULL,
@@ -10,3 +12,4 @@ create table trade(
       FOREIGN KEY(user_id) 
 	  REFERENCES users(user_id)
 )
+

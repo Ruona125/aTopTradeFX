@@ -1,3 +1,5 @@
+BEGIN TRANSACTION;
+
 CREATE TABLE users(
    user_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
    first_name VARCHAR(255) NOT NULL,
@@ -10,3 +12,5 @@ CREATE TABLE users(
    address varchar(255) NOT NULL,
    PRIMARY KEY(user_id)
 );
+
+COMMIT;

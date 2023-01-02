@@ -7,7 +7,7 @@ function getAllLogin(req, res) {
   db.select("*")
     .from("logins")
     .then((user) => res.status(200).json(user))
-    .catch((err) => res.sttatus(400).json("error getting users"));
+    .catch((err) => res.status(400).json("error getting users"));
 }
 
 function getCertainLogin(req, res) {

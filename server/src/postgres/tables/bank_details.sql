@@ -1,4 +1,6 @@
-create table bank_details(
+
+
+CREATE TABLE bank_details(
   bank_id int generated always as identity NOT NULL, 
   user_id int NOT NULL,
   bank_name varchar(255) NOT NULL,
@@ -8,4 +10,5 @@ create table bank_details(
   constraint fk_customer
   foreign key(user_id)
   references users(user_id)
-)
+);
+

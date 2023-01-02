@@ -1,7 +1,6 @@
 const express = require("express");
 const { body } = require("express-validator");
 const { requireAuth } = require("../../../utils/authorization");
-const { userDetailsTrade } = require("../../../utils/middlewares");
 const userRouterRegistration = express.Router();
 
 const {

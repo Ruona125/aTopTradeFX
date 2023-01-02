@@ -7,9 +7,15 @@ const PORT = 8000;
 
 const server = http.createServer(app);
 
-const startServer = async () => {
-  await redisClient.connect();
-  await redisClient.set("testing", "welcome");
+// const startServer = async () => {
+//   await redisClient.connect();
+//   await redisClient.set("testing", "welcome");
+//   server.listen(PORT, () => {
+//     console.log(`listening to port ${PORT} 🚀 .....`);
+//   });
+// };
+
+const startServer = () => {
   server.listen(PORT, () => {
     console.log(`listening to port ${PORT} 🚀 .....`);
   });
