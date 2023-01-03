@@ -49,7 +49,7 @@ function getBankDetails(req, res) {
   db.select("*")
     .from("bank_details")
     .then((bankDetail) => res.status(200).json(bankDetail))
-    .catch((err) => res.status(400).json("error getting bank details"));
+    .catch((err) => res.status(400).json(console.log(err)));
 }
 
 function getCertainBankDetails(req, res) {
