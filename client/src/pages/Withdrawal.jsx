@@ -7,7 +7,7 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(5),
       width: "35ch",
       display: "flex",
     },
@@ -84,12 +84,14 @@ const Withdrawal = () => {
             />
             <TextField
               id="outlined-basic"
-              label="Wallet Address"
+              label="Wallet Address(optional)"
               variant="outlined"
+              helperText="(optional)"
               value={wallet_address}
               onChange={(e) => setWalletAddress(e.target.value)}
               inputProps={{ style: { color: "#fff" } }}
               InputLabelProps={{ style: { color: "gold" } }}
+              FormHelperTextProps={{ style: { color: "gold" } }}
             />
             <Button
               variant="contained"

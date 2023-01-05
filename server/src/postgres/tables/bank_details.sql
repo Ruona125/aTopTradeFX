@@ -5,7 +5,7 @@ CREATE TABLE bank_details(
   user_id int NOT NULL,
   bank_name varchar(255) NOT NULL,
   account_number varchar(255) NOT NULL,
-  wallet_address varchar(255) NOT NULL,
+  wallet_address varchar(255),
   primary key(bank_id),
   constraint fk_customer
   foreign key(user_id)

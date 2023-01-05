@@ -116,35 +116,35 @@ const Report = () => {
           {reports.map((report, i) => {
             return (
               <StyledTableRow key={i}>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.first_name}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.last_name}
                 </StyledTableCell>
 
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.capital}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.profit}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.total_number_of_trade}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.amount}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.bank_name}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.account_number}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   {report.wallet_address}
                 </StyledTableCell>
-                <StyledTableCell align="center" >
+                <StyledTableCell align="center">
                   <Link to={`/update/trade/${report.user_id}`}>
                     Update Trade Details
                   </Link>

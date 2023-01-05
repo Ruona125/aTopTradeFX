@@ -43,10 +43,10 @@ const AdminHeader = () => {
         <AppBar color="transparent" position="static">
           <Container>
             <Toolbar>
-              <Typography className={classes.title} variant="h6">
+              <Typography className={classes.title} variant="h7">
                 <Link to="/">Atop Trade FX</Link>
               </Typography>
-              <Link to="/admin/dashboard">
+              {/* <Link to="/admin/dashboard">
                 <Button
                   variant="contained"
                   style={{
@@ -55,9 +55,9 @@ const AdminHeader = () => {
                     marginLeft: 15,
                     backgroundColor: "#eebc1d",
                   }}>
-                  DashBoard
+                  Home
                 </Button>
-              </Link>
+              </Link> */}
               <Link to="/report">
                 <Button
                   variant="contained"
